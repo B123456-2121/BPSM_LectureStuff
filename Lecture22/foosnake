@@ -1,0 +1,7 @@
+rule plot:
+  output:
+ 	 "{data}_plot.pdf"
+  input:
+ 	 lambda x: shell("ls {x.data}/*.csv", iterable=True)
+  shell:  
+ 	 "./myplotter.py -o {output} {input}"
