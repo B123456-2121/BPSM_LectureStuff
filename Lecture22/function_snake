@@ -1,0 +1,10 @@
+def plot_input(x):
+ 	return shell("ls {x.data}/*.csv", iterable=True)
+
+rule plot:
+  output:
+ 	 "{data}_plot.pdf"
+  input:
+ 	 plot_input
+  shell:  
+ 	 "./myplotter.py -o {output} {input}"
